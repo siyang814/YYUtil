@@ -1,0 +1,189 @@
+package com.example.list.yyutil.util.internet;
+
+import android.app.Activity;
+
+import java.util.Map;
+
+public class MyTask extends CallBack{
+
+
+	public Activity activity;
+
+	public static final int POST = 0;
+	
+	public static final int GET = 1;
+	
+	public static final int IMAGE = 2;
+	
+	public int RequestState = GET;
+
+	public CallBack callBack;
+	//post用到的
+	public Map<String, Object> map;
+
+	public boolean showDialog;
+
+	//  解析错误， 是否回调
+	public boolean ErrorCallBack = false;
+
+	//显示错误信息文本提示， 默认显示
+	public boolean showErrorTost = true;
+
+	public String url;
+
+	public String result;
+	//请求标识
+	public int RequestCode;
+	//返回模型类
+	public Object resultModel;
+
+	public MyException myException;
+
+	private boolean isDead;
+
+
+
+	public MyTask ()
+	{
+
+	}
+
+	public Activity getActivity() {
+		return activity;
+	}
+
+	public void setActivity(Activity activity) {
+		this.activity = activity;
+	}
+
+	public boolean isDead() {
+		return isDead;
+	}
+
+	public void setDead(boolean dead) {
+		isDead = dead;
+	}
+
+
+	//get
+	public MyTask ( String url, int RequestState, CallBack callBack )
+	{
+		this.url = url;
+		this.RequestState = RequestState;
+		this.callBack = callBack;
+
+	}
+	//post
+	public MyTask ( String url, int RequestState, CallBack callBack, Map<String, Object> map )
+	{
+		this.url = url;
+		this.RequestState = RequestState;
+		this.callBack = callBack;
+		this.map = map;
+	}
+
+	public void setErrorCallBack(boolean errorCallBack) {
+		ErrorCallBack = errorCallBack;
+	}
+
+	public boolean isErrorCallBack() {
+		return ErrorCallBack;
+	}
+
+	public boolean isShowErrorTost() {
+		return showErrorTost;
+	}
+
+	public void setShowErrorTost(boolean showErrorTost) {
+		this.showErrorTost = showErrorTost;
+	}
+	public boolean isShowDialog()
+	{
+		return showDialog;
+	}
+	public void setShowDialog(boolean showDialog)
+	{
+		this.showDialog = showDialog;
+	}
+	public Map<String, Object> getMap()
+	{
+		return map;
+	}
+	public void setMap(Map<String, Object> map)
+	{
+		this.map = map;
+	}
+	public CallBack getCallBack() {
+		return callBack;
+	}
+
+	
+	
+	public void setCallBack(CallBack callBack) {
+		this.callBack = callBack;
+	}
+
+
+	public int getRequestState() {
+		return RequestState;
+	}
+
+	public void setRequestState(int requestState) {
+		RequestState = requestState;
+	}
+
+	public String getUrl() {
+		return url;
+	}
+
+	public void setUrl(String url) {
+		this.url = url;
+	}
+
+	public String getresult() {
+		return result;
+	}
+
+	public void setresult(String postEntity) {
+		result = postEntity;
+	}
+	
+	public Object getResultModel() {
+		return resultModel;
+	}
+	public void setResultModel(Object resultModel) {
+		this.resultModel = resultModel;
+	}
+
+	public MyException getMyException() {
+		return myException;
+	}
+
+	public void setMyException(MyException myException) {
+		this.myException = myException;
+	}
+
+	@Override
+	public void handler(MyTask mTask) {
+		if ( getCallBack() != null )
+		{
+			getCallBack().handler(mTask);
+		}
+	}
+
+	@Override
+	public void handlerCancel(MyTask mTask) {
+		if ( getCallBack() != null )
+		{
+			getCallBack().handlerCancel(mTask);
+		}
+	}
+
+	@Override
+	public void handlerError(MyTask mTask) {
+		if ( getCallBack() != null )
+		{
+			getCallBack().handlerError(mTask);
+		}
+	}
+}

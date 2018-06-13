@@ -1,0 +1,91 @@
+package com.example.list.yyutil.util.ui;
+
+import android.app.Activity;
+import android.view.View;
+import android.view.ViewGroup;
+import android.widget.BaseAdapter;
+
+import java.util.List;
+
+/**
+ * Created by yy on 15/7/2.
+ */
+public abstract class MyBaseAdapter<T> extends BaseAdapter {
+
+    public Activity mContext;
+
+    protected List<T> listItem;
+
+    public MyBaseAdapter (Activity c)
+    {
+        this.mContext = c;
+    }
+
+    public MyBaseAdapter (Activity c, List<T> listItem )
+    {
+        this.mContext = c;
+        this.listItem = listItem;
+    }
+
+    public void setList (List<T> listItem)
+    {
+//        if ( listItem == null ) return;
+        this.listItem = listItem;
+        notifyDataSetChanged();
+    }
+
+    public void addList ( List<T> listItem )
+    {
+        if ( listItem == null ) return;
+        this.listItem.addAll(listItem);
+        notifyDataSetChanged();
+    }
+
+    public void clean ()
+    {
+        if ( listItem == null )
+        return;
+        listItem.clear();
+        listItem = null;
+    }
+
+    public boolean isLast (int i)
+    {
+        if ( i+1 == getCount()) return true;
+        return false;
+    }
+
+    @Override
+    public int getCount() {
+        return  (listItem == null ) ? 0 : listItem.size();
+    }
+
+    @Override
+    public Object getItem(int i) {
+        return (listItem == null || listItem.size() == 0 ) ? null : listItem.get(i);
+    }
+
+    public Object getList ()
+    {
+        return listItem;
+    }
+
+    public void removeAt ( int position )
+    {
+        listItem.remove(position);
+        notifyDataSetChanged();
+    }
+
+    @Override
+    public long getItemId(int i) {
+        return i;
+    }
+
+    @Override
+    public View getView(int i, View view, ViewGroup viewGroup) {
+        return setView(i, view, viewGroup);
+    }
+
+    public abstract View setView ( int i, View view, ViewGroup viewGroup );
+
+}

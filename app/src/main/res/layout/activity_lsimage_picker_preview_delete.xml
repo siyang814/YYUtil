@@ -1,0 +1,112 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+                xmlns:tools="http://schemas.android.com/tools"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:paddingLeft="0dp"
+                android:paddingRight="0dp"
+                android:paddingTop="@dimen/activity_vertical_margin"
+                android:paddingBottom="@dimen/activity_vertical_margin"
+                android:background="@color/black"
+                tools:context="com.lis99.mobile.club.LSImagePickerPreviewActivity">
+
+
+    <com.lis99.mobile.club.widget.ExtendedViewPager
+        android:id="@+id/gallery"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent" />
+
+
+    <RelativeLayout
+        android:id="@+id/titlehead"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/title_height" >
+
+        <ImageView style="@style/fill_fill"
+                   android:id="@+id/iv_title_bg"
+        />
+
+        <RelativeLayout
+            android:id="@+id/titleLeft"
+            android:layout_width="70dp"
+            android:layout_height="fill_parent"
+            android:layout_alignParentLeft="true"
+            android:layout_marginLeft="10dip"
+        >
+
+            <ImageView
+                android:id="@+id/titleLeftImage"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@drawable/dynamic_return"
+                android:layout_centerVertical="true"
+
+            />
+        </RelativeLayout>
+
+
+
+        <ImageView
+            android:id="@+id/okButton"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:layout_marginRight="12dp"
+            android:layout_centerVertical="true"
+            android:src="@drawable/dynamic_preview_icon_delet"
+            android:onClick="onClick"
+            android:paddingRight="12dp"
+            android:paddingLeft="12dp"
+            android:paddingTop="6dp"
+            android:paddingBottom="6dp"
+        />
+
+
+
+        <TextView
+            android:id="@+id/title"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:text="相机胶卷"
+            android:singleLine="true"
+            android:layout_centerInParent="true"
+            android:textColor="@color/white"
+            android:textSize="@dimen/title_text_height"
+            android:shadowColor="#ff000000"
+            android:shadowRadius="1"
+            android:shadowDx="3"
+            android:shadowDy="3"
+        />
+
+
+    </RelativeLayout>
+
+
+    <CheckBox
+        android:id="@+id/checkbox"
+        android:layout_width="30dp"
+        android:layout_height="30dp"
+        android:layout_alignParentRight="true"
+        android:layout_marginRight="20dp"
+        android:layout_below="@+id/titlehead"
+        android:layout_marginTop="16dp"
+        android:button="@null"
+        android:drawableLeft="@drawable/image_picker_checker2"
+        android:focusable="false"
+        android:padding="3dp" />
+
+    <TextView
+        android:id="@+id/countView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textColor="#666"
+        android:textSize="14sp"
+        android:layout_centerHorizontal="true"
+        android:layout_alignParentBottom="true"
+        android:layout_marginBottom="35dp"
+        android:text="1/1"/>
+
+
+
+</RelativeLayout>
